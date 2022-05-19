@@ -1,0 +1,9 @@
+version: v1.1.0
+steps:
+  - cmd: >
+      docker manifest create
+      {{.Run.Registry}}/foster:latest
+      {{.Run.Registry}}/foster:1.0.0_foster
+      {{.Run.Registry}}/foster:1.0.0_arm64
+  - cmd: docker manifest push --purge {{.Run.Registry}}/foster:latest
+  - cmd: docker manifest inspect {{.Run.Registry}}/foster:latest
